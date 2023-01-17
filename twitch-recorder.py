@@ -30,7 +30,7 @@ class TwitchRecorder:
         self.root_path = config.root_path
 
         # user configuration
-        self.username = os.getenv('tsr_username', config.username)
+        self.username = config.username
         self.quality = "best"
 
         # twitch configuration
