@@ -1,10 +1,10 @@
-name: Build and push Docker image from devel
+name: Build and push Docker image from testing
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - 'devel'
+      - 'testing'
 
 env:
   REGISTRY: ghcr.io

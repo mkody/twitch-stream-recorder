@@ -13,16 +13,15 @@ services:
         UID: 1000
         GID: 1000
     environment:
-      # You can set the streamer's username here which
-      # takes priority over the one set in the config.
-      - tsr_username=0kody
+      - USERNAME=your_favourite_streamer
+      - CLIENT_ID=your_client_id
+      - CLIENT_SECRET=your_client_secret
     volumes:
-      - /path/to/config.py:/opt/config.py
       - /path/to/recordings:/opt/recordings
     restart: unless-stopped
 
   # If you want to run it for multiple streamers:
   # - duplicate the whole "tsr" section
-  # - change the "tsr" service name to something else
+  # - change the "twitch-stream-recorder" service name to something else
   #   (ie. `tsr-bobross`) as they have to be unique
-  # - and set the username in the `tsr_username` env
+  # - and set the new username in the `USERNAME` env

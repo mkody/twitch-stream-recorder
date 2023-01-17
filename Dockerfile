@@ -1,18 +1,26 @@
-FROM python:3-slim
+FROM python:3-alpine
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends --no-install-suggests -y ffmpeg
+RUN apk update && apk upgrade
+
+RUN apk add --no-cache tini
+
+RUN apk add --no-cache ffmpeg
 
 RUN python -m pip install --no-cache-dir --upgrade pip
 RUN python -m pip install --no-cache-dir --upgrade streamlink requests
 
-COPY ./twitch-recorder.py /opt
+COPY twitch-recorder.py /opt
+
+COPY entrypoint.sh /
+RUN chmod 755 /entrypoint.sh
 
 ARG UNAME=user
 ARG UID=1000
 ARG GID=1000
-RUN groupadd -g $GID -o $UNAME
-RUN useradd -m -u $UID -g $GID -o -s /bin/bash $UNAME
+RUN addgroup -g $GID $UNAME
+RUN adduser -D -u $UID -G $UNAME -s /bin/bash $UNAME
 RUN chown -R $UID:$GID /opt
 USER $UNAME
 
-CMD ["python", "/opt/twitch-recorder.py"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/sbin/tini", "--", "python", "/opt/twitch-recorder.py"]

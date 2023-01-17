@@ -9,41 +9,38 @@ The main component is from [Ancalentari Twitch Stream Recorder](https://github.c
 To run this container and record streams from Twitch, you need to register a dummy app and get a client_id and client_secret. Both is explained in the setup section.
 
 ## Setup
-Create a `config.py` file in a directory of your choice (you will need to mount this file into the container later):
+The container needs a few configuration parameters. These are:
 
-```bash
-root_path = "/opt/recordings"
-username = "gronkh"
-client_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-client_secret = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-```
-
-`root_path` - path in the container to where your VODs will be saved to (Don't change this!)  
-`username` - name of the streamer you want to record by default (Change this accordingly!)  
-`client_id` - you can grab this from [here](https://dev.twitch.tv/console/apps) once you register your application (Replace with your own!)  
-`client_secret` - you generate this [here](https://dev.twitch.tv/console/apps) as well, for your registered application (Replace with your own!)
+`USERNAME`      - name of the streamer you want to record (Change this accordingly!)  
+`CLIENT_ID`     - you can grab this from [here](https://dev.twitch.tv/console/apps) once you register your application (Replace with your own!)  
+`CLIENT_SECRET` - you generate this [here](https://dev.twitch.tv/console/apps) as well, for your registered application (Replace with your own!)
 
 ## Usage
 Start the container with the following `docker run` command:  
 ```bash
-docker run \
-   -v /path/to/config.py:/opt/config.py \
+docker run -d \
+   -e USERNAME=your_favourite_streamer \
+   -e CLIENT_ID=your_client_id \
+   -e CLIENT_SECRET=your_client_secret \
    -v /path/to/recordings:/opt/recordings \
    ghcr.io/mkody/twitch-stream-recorder:master
 ```
 The options in this command:  
-`-v /path/to/config.py:/opt/config.py` Map the created config file to a defined location in the container, so the python script can find it.  
-`-v /path/to/recordings:/opt/recordings` Map a folder of your choice to a defined location in the container. This is the place where all recordings will be saved to.  
+`-v /path/to/recordings:/opt/recordings` Map a folder of your choice (left of ":") to a defined location in the container (right of ":"). This is the place where all recordings will be saved to.  
 `ghcr.io/mkody/twitch-stream-recorder:master` Use the "master" tag for the latest version, that's the GitHub branch from which the Docker images will be built.
 
 You can also run it as a Docker Compose setup, see [docker-compose.yml](docker-compose.yml).  
 If you want to build the image while using Compose (ie. you changed the UID/GID) run `docker-compose up -d --build`.
 
+
 ## Notes
 Open TODOs for future improvements:
+- [x] Switch to alpine based images
+- [x] Add "tini" init system
+- [x] Allow configuration via env variables
 - [x] Run process as non-root user
 - [ ] Add "latest" tag
-- [ ] Switch to alpine based images
 - [ ] Run GitHub Action on a regular base
 - [ ] Separate container tags for the regular built images?
 - [ ] How many versions of the image do i want to store on GitHub?
+- [ ] Cross build image for ARM architecture
