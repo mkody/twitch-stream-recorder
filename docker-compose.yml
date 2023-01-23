@@ -16,6 +16,7 @@ services:
       - USERNAME=your_favourite_streamer
       - CLIENT_ID=your_client_id
       - CLIENT_SECRET=your_client_secret
+      # - AUTH_TOKEN=your_oauth_token_cookie
     volumes:
       - /path/to/recordings:/opt/recordings
     restart: unless-stopped

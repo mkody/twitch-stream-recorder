@@ -40,6 +40,7 @@ class TwitchRecorder:
                          + self.client_secret + "&grant_type=client_credentials"
         self.url = "https://api.twitch.tv/helix/streams"
         self.access_token = self.fetch_access_token()
+        self.auth_token = config.auth_token
 
     def fetch_access_token(self):
         token_response = requests.post(self.token_url, timeout=15)
@@ -148,10 +149,15 @@ class TwitchRecorder:
                 recorded_filename = os.path.join(recorded_path, filename)
                 processed_filename = os.path.join(processed_path, filename)
 
+                # set oauth token if available (to skip ads)
+                auth_header = []
+                if self.auth_token and self.auth_token.strip() != "":
+                    auth_header = ["--twitch-api-header=Authorization=OAuth " + self.auth_token]
+
                 # start streamlink process
                 subprocess.call(
                     ["streamlink", "--twitch-disable-ads", "twitch.tv/" + self.username, self.quality,
-                     "-o", recorded_filename])
+                     "-o", recorded_filename] + auth_header)
 
                 logging.info("recording stream is done, processing video file")
                 if os.path.exists(recorded_filename) is True:
