@@ -1,15 +1,12 @@
-FROM python:3-alpine
+FROM python:3.11.2-alpine3.17
 
-RUN apk update && apk upgrade
+RUN apk add --no-cache tini=0.19.0-r1
 
-RUN apk add --no-cache tini
+RUN apk add --no-cache ffmpeg=5.1.2-r1
 
-RUN apk add --no-cache ffmpeg
+RUN python -m pip install --no-cache-dir --upgrade streamlink==5.3.1
 
-RUN python -m pip install --no-cache-dir --upgrade pip
-RUN python -m pip install --no-cache-dir --upgrade streamlink requests
-
-COPY twitch-recorder.py /opt
+COPY twitch-recorder.py /opt/
 
 COPY entrypoint.sh /
 RUN chmod 755 /entrypoint.sh
