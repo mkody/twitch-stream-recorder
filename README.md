@@ -61,9 +61,5 @@ Open TODOs for future improvements:
 - [x] Switch to alpine based images
 - [x] Add "tini" init system
 - [x] Allow configuration via env variables
-- [ ] Run process as non-root user
-- [ ] Add "latest" tag
-- [ ] Run GitHub Action on a regular base
-- [ ] Separate container tags for the regular built images?
-- [ ] How many versions of the image do i want to store on GitHub?
-- [ ] Cross build image for ARM architecture
+- [ ] Run process as non-root user?
+- [ ] Cross build image for ARM architecture?
