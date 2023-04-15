@@ -2,6 +2,7 @@
 
 # Ensure presence of all needed variables
 [ -n "${USERNAME}" ] || { echo "USERNAME not given, exit."; exit 1; }
+[ -n "${QUALITY}" ] || { echo "QUALITY not given, exit."; exit 1; }
 [ -n "${CLIENT_ID}" ] || { echo "CLIENT_ID not given, exit."; exit 1; }
 [ -n "${CLIENT_SECRET}" ] || { echo "CLIENT_SECRET not given, exit."; exit 1; }
 
@@ -9,6 +10,7 @@
 cat <<EOF > /opt/config.py
 root_path = "/opt/recordings"
 username = "${USERNAME}"
+quality = "${QUALITY}"
 client_id = "${CLIENT_ID}"
 client_secret = "${CLIENT_SECRET}"
 auth_token = "${AUTH_TOKEN}"
