@@ -21,6 +21,9 @@ services:
       - /path/to/recordings:/opt/recordings
     restart: unless-stopped
 
+  # I'd recommend to remove the "=" and values after CLIENT_ID, CLIENT_SECRET
+  # and AUTH_TOKEN and set them in a `.env` file instead.
+
   # If you want to run it for multiple streamers:
   # - duplicate the whole "tsr" section
   # - change the "twitch-stream-recorder" service name to something else

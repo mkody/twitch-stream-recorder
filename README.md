@@ -15,7 +15,7 @@ The container needs a few configuration parameters. These are:
 `CLIENT_ID`     - you can grab this from [here](https://dev.twitch.tv/console/apps) once you register your application (Replace with your own!)  
 `CLIENT_SECRET` - you generate this [here](https://dev.twitch.tv/console/apps) as well, for your registered application (Replace with your own!)  
 `AUTH_TOKEN`    - optionally your [OAuth Token](https://streamlink.github.io/cli/plugins/twitch.html#authentication) to prevent ad breaks if you're subscribed to the streamer  
-                  only add the string consisting of 30 alphanumerical characters without any quotations
+                  (Only add the string consisting of 30 alphanumerical characters without any quotations!)
 
 ## Usage
 Start the container with the following `docker run` command:  
@@ -32,7 +32,7 @@ The options in this command:
 `-v /path/to/recordings:/opt/recordings` Map a folder of your choice (left of ":") to a defined location in the container (right of ":"). This is the place where all recordings will be saved to.  
 `ghcr.io/mkody/twitch-stream-recorder:master` Use the "master" tag for the latest version, that's the GitHub branch from which the Docker images will be built.
 
-You can also run it as a Docker Compose setup, see [docker-compose.yml](docker-compose.yml).  
+You can also run it as a Docker Compose setup, see [docker-compose.example.yml](docker-compose.example.yml).  
 If you want to build the image while using Compose (ie. you changed the UID/GID) run `docker-compose up -d --build`.
 
 ## Notes
