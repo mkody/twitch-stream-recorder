@@ -4,8 +4,8 @@ services:
   tsr:
     image: ghcr.io/mkody/twitch-stream-recorder:master
     # You can also change the UID/GID and the username
-    # used in the container and build the image again
-    # with `--build` when launching your compose stack.
+    # used in the container and build the image again with 
+    # `docker compose build` or `docker compose up -d --build`.
     build:
       context: .
       args:
@@ -25,8 +25,8 @@ services:
   # I'd recommend to remove the "=" and values after CLIENT_ID, CLIENT_SECRET
   # and AUTH_TOKEN and set them in a `.env` file instead.
 
-  # If you want to run it for multiple streamers:
+  # If you want to run it for multiple streams:
   # - duplicate the whole "tsr" section
-  # - change the "twitch-stream-recorder" service name to something else
-  #   (ie. `tsr-bobross`) as they have to be unique
-  # - and set the new username in the `USERNAME` env
+  # - change the "tsr" service name to something else
+  #   (ie. `tsr-bobross`) since they have to be unique
+  # - set the new username in the `USERNAME` env

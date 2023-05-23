@@ -1,2 +1,3 @@
 recordings/
 .env
+docker-compose.yml
