@@ -13,8 +13,8 @@ The container needs a few configuration parameters. These are:
 
 `USERNAME`      - name of the streamer you want to record (Change this accordingly!)  
 `CLIENT_ID`     - you can grab this from [here](https://dev.twitch.tv/console/apps) once you register your application (Replace with your own!)  
-`CLIENT_SECRET` - you generate this [here](https://dev.twitch.tv/console/apps) as well, for your registered application (Replace with your own!)
-`AUTH_TOKEN`    - optionally your [OAuth Token](https://streamlink.github.io/cli/plugins/twitch.html#authentication) to prevent ad breaks if you're subscribed to the streamer.  
+`CLIENT_SECRET` - you generate this [here](https://dev.twitch.tv/console/apps) as well, for your registered application (Replace with your own!)  
+`AUTH_TOKEN`    - optionally your [OAuth Token](https://streamlink.github.io/cli/plugins/twitch.html#authentication) to prevent ad breaks if you're subscribed to the streamer  
                   only add the string consisting of 30 alphanumerical characters without any quotations
 
 ## Usage
