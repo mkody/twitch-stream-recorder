@@ -12,6 +12,7 @@ To run this container and record streams from Twitch, you need to register a dum
 The container needs a few configuration parameters. These are:
 
 `USERNAME`      - name of the streamer you want to record (Change this accordingly!)  
+`QUALITY`       - this uses the streamlink [STREAM](https://streamlink.github.io/cli.html#cmdoption-arg-STREAM) setting to choose the quality to record.  
 `CLIENT_ID`     - you can grab this from [here](https://dev.twitch.tv/console/apps) once you register your application (Replace with your own!)  
 `CLIENT_SECRET` - you generate this [here](https://dev.twitch.tv/console/apps) as well, for your registered application (Replace with your own!)  
 `AUTH_TOKEN`    - optionally your [OAuth Token](https://streamlink.github.io/cli/plugins/twitch.html#authentication) to prevent ad breaks if you're subscribed to the streamer  
@@ -22,6 +23,7 @@ Start the container with the following `docker run` command:
 ```bash
 docker run -d \
    -e USERNAME=your_favourite_streamer \
+   -e QUALITY=best \
    -e CLIENT_ID=your_client_id \
    -e CLIENT_SECRET=your_client_secret \
    -e AUTH_TOKEN=your_oauth_token_cookie \
@@ -40,9 +42,5 @@ Open TODOs for future improvements:
 - [x] Switch to alpine based images
 - [x] Add "tini" init system
 - [x] Allow configuration via env variables
-- [x] Run process as non-root user
-- [ ] Add "latest" tag
-- [ ] Run GitHub Action on a regular base
-- [ ] Separate container tags for the regular built images?
-- [ ] How many versions of the image do i want to store on GitHub?
-- [ ] Cross build image for ARM architecture
+- [x] Run process as non-root user?
+- [ ] Cross build image for ARM architecture?

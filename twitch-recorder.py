@@ -31,7 +31,7 @@ class TwitchRecorder:
 
         # user configuration
         self.username = config.username
-        self.quality = "best"
+        self.quality = config.quality
 
         # twitch configuration
         self.client_id = config.client_id
