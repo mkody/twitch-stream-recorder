@@ -4,7 +4,7 @@ RUN apk add --no-cache tini=0.19.0-r1
 
 RUN apk add --no-cache ffmpeg=6.0-r15
 
-RUN python -m pip install --no-cache-dir --upgrade streamlink==5.5.1
+RUN python -m pip install --no-cache-dir --upgrade streamlink==6.0.0
 
 COPY twitch-recorder.py /opt/
 
