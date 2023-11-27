@@ -1,11 +1,13 @@
 version: 2
-updates:
 
+updates:
   - package-ecosystem: "github-actions"
     target-branch: "master"
     directory: "/"
     schedule:
       interval: "weekly"
+    assignees:
+      - "mkody"
 
   # Enable version updates for Docker
   - package-ecosystem: "docker"
@@ -13,3 +15,5 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    assignees:
+      - "mkody"
