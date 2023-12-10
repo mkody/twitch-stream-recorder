@@ -1,6 +1,6 @@
 FROM python:3.12.1-alpine3.19
 
-RUN apk add --no-cache tini=0.19.0-r1
+RUN apk add --no-cache tini=0.19.0-r2
 
 RUN apk add --no-cache ffmpeg=6.0.1-r0
 
