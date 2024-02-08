@@ -36,11 +36,3 @@ The options in this command:
 
 You can also run it as a Docker Compose setup, see [docker-compose.example.yml](docker-compose.example.yml).  
 If you want to build the image while using Compose (ie. you changed the UID/GID) run `docker-compose up -d --build`.
-
-## Notes
-Open TODOs for future improvements:
-- [x] Switch to alpine based images
-- [x] Add "tini" init system
-- [x] Allow configuration via env variables
-- [x] Run process as non-root user?
-- [ ] Cross build image for ARM architecture?
