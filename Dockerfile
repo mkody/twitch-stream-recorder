@@ -1,4 +1,4 @@
-FROM python:3.12.2-alpine3.19
+FROM python:3.12.4-alpine3.20
 
 RUN apk add --no-cache tini=0.19.0-r3
 
