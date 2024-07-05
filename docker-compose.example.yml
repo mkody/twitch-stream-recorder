@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   tsr:
     image: ghcr.io/mkody/twitch-stream-recorder:master
