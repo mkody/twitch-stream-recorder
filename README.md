@@ -19,6 +19,11 @@ The container needs a few configuration parameters. These are:
 `AUTH_TOKEN`    - optionally your [OAuth Token](https://streamlink.github.io/cli/plugins/twitch.html#authentication) to prevent ad breaks if you're subscribed to the streamer.  
                   only add the string consisting of 30 alphanumerical characters without any quotations
 
+Additionally, there are more advanced settings to set:
+
+`DISABLE_FFMPEG`   - disables ffmpeg processing (fixing errors in recorded file) (Optional, defaults to True, Use "True" or "False")  
+`REFRESH`          - the interval to check user availability (Optional, can't be set below 15, defaults to 15)  
+
 ## Usage
 Start the container with the following `docker run` command:  
 ```bash
