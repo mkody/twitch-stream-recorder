@@ -14,12 +14,8 @@ quality = "${QUALITY}"
 client_id = "${CLIENT_ID}"
 client_secret = "${CLIENT_SECRET}"
 auth_token = "${AUTH_TOKEN}"
-EOF
-
-# Use optional variables, if present
-cat <<EOF >> /opt/config.py
-disable_ffmpeg = "${DISABLE_FFMPEG:-False}"
-refresh = "${REFRESH:-15}"
+disable_ffmpeg = ${DISABLE_FFMPEG:-False}
+refresh = ${REFRESH:-15}
 EOF
 
 # Hand off to the CMD
