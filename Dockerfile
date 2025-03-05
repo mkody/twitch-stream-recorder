@@ -1,10 +1,10 @@
-FROM python:3.13.2-alpine3.20
+FROM python:3.13.2-alpine3.21
 
 RUN apk add --no-cache tini~=0.19.0
 
 RUN apk add --no-cache ffmpeg~=6.1
 
-RUN python -m pip install --no-cache-dir --upgrade streamlink==7.0.0
+RUN python -m pip install --no-cache-dir --upgrade streamlink==7.1.2
 
 COPY twitch-recorder.py /opt/
 
