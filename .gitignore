@@ -1,3 +1,6 @@
+__pycache__/
 recordings/
+*.pyc
 .env
+config.py
 docker-compose.yml
