@@ -1,23 +1,19 @@
 FROM python:3.13.2-alpine3.21
 
-RUN apk add --no-cache tini~=0.19.0
-
-RUN apk add --no-cache ffmpeg~=6.1
-
-RUN python -m pip install --no-cache-dir --upgrade streamlink==7.1.2
-
-COPY twitch-recorder.py /opt/
-
-COPY entrypoint.sh /
-RUN chmod 755 /entrypoint.sh
-
 ARG UNAME=user
 ARG UID=1000
 ARG GID=1000
-RUN addgroup -g $GID $UNAME
-RUN adduser -D -u $UID -G $UNAME -s /bin/bash $UNAME
-RUN chown -R $UID:$GID /opt
-USER $UNAME
 
+COPY entrypoint.sh /
+COPY twitch-recorder.py /opt/
+
+RUN apk add --no-cache ffmpeg~=6.1 tini~=0.19.0 && \
+    python -m pip install --no-cache-dir --upgrade streamlink==7.1.3 && \
+    chmod 755 /entrypoint.sh && \
+    addgroup -g "$GID" "$UNAME" && \
+    adduser -D -u "$UID" -G "$UNAME" -s /bin/bash "$UNAME" && \
+    chown -R "$UID:$GID" /opt
+
+USER $UNAME
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/sbin/tini", "--", "python", "/opt/twitch-recorder.py"]
