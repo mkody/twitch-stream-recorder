@@ -16,12 +16,14 @@ services:
       - CLIENT_ID=your_client_id
       - CLIENT_SECRET=your_client_secret
       # - AUTH_TOKEN=your_oauth_token_cookie
+      # - DISABLE_FFMPEG=True
+      # - REFRESH=15
     volumes:
       - /path/to/recordings:/opt/recordings
     restart: unless-stopped
 
-  # I'd recommend to remove the "=" and values after CLIENT_ID, CLIENT_SECRET
-  # and AUTH_TOKEN and set them in a `.env` file instead.
+  # I'd recommend to remove the "=" and values after CLIENT_ID, CLIENT_SECRET,
+  # AUTH_TOKEN, DISABLE_FFMPEG, REFRESH and set them in a `.env` file instead.
 
   # If you want to run it for multiple streams:
   # - duplicate the whole "tsr" section
