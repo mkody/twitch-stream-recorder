@@ -21,7 +21,7 @@ The container needs a few configuration parameters. These are:
 
 Additionally, there are more advanced settings to set:
 
-`DISABLE_FFMPEG`   - disables ffmpeg processing (fixing errors in recorded file) (Optional, defaults to True, Use "True" or "False")  
+`DISABLE_FFMPEG`   - disables ffmpeg processing (fixing errors in recorded file) (Optional, defaults to False, Use "True" or "False")  
 `REFRESH`          - the interval to check user availability (Optional, can't be set below 15, defaults to 15)  
 
 ## Usage
