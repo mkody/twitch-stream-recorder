@@ -20,9 +20,9 @@ Additionally, there are more advanced settings to set:
 - `AUTH_TOKEN`      - Your [OAuth Token](https://streamlink.github.io/cli/plugins/twitch.html#authentication) to prevent ad breaks if you're subscribed to the streamer.  
                       (Optional, only add the string consisting of 30 alphanumerical characters without any quotations.)
 - `DISABLE_FFMPEG`  - Disables ffmpeg processing (fixing errors in recorded file).  
-                      (Optional, defaults to `False`, use `True` or `False`.)
+                      (Optional, defaults to `False`. Use `True` or `False`.)
 - `REFRESH`         - The interval to check user availability.  
-                      (Optional, can't be set below `15`, defaults to `15`.)
+                      (Optional, defaults to `15`. Can't be set below `15`.)
 
 ## Usage
 Start the container with the following `docker run` command:
