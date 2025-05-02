@@ -1,5 +1,6 @@
 __pycache__/
 recordings/
+*.log
 *.pyc
 .env
 config.py
