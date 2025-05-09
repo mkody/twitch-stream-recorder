@@ -1,0 +1,27 @@
+# This file uses a "base" so that you can add more streams easily.
+# Make sure you have a ".env" file in the same directory with *at least*
+# the following variables set: QUALITY, CLIENT_ID, CLIENT_SECRET
+x-base: &base
+  image: ghcr.io/mkody/twitch-stream-recorder:master
+  build:
+    context: .
+    args:
+      UNAME: user
+      UID: 1000
+      GID: 1000
+  env_file: .env
+  volumes:
+    - /path/to/recordings:/opt/recordings
+  restart: unless-stopped
+
+services:
+  tsr:
+    <<: *base
+    environment:
+      - USERNAME=your_favourite_streamer
+
+  # If you want to add more streams:
+  # - duplicate the whole "tsr" section
+  # - change the "tsr" service name since they have to be unique
+  #   (i.e. `tsr-bobross`)
+  # - set the new username in the `USERNAME` environment variable

@@ -38,8 +38,10 @@ docker run -d \
 ```
 
 The options in this command:  
+- `-d` - Run this in the background.
+- `-e [...]` - They set the environment variables, please refer to the [Setup](#setup) section.
 - `-v /path/to/recordings:/opt/recordings` - Map a folder of your choice (left of ":") to a defined location in the container (right of ":"). This is the place where all recordings will be saved to.  
-- `ghcr.io/mkody/twitch-stream-recorder:master` - Use the "master" tag for the latest version, that's the GitHub branch from which the Docker images will be built.
+- `ghcr.io/mkody/twitch-stream-recorder:master` - The image to use, here with the "master" tag for the latest version, that's the GitHub branch from which the Docker images will be built.
 
-You can also run it as a Docker Compose setup, see [docker-compose.example.yml](docker-compose.example.yml).  
+You can also run it as a Docker Compose setup, see [compose.example.yaml](compose.example.yaml).  
 To build an image while using Compose (i.e. you changed the UID/GID) run `docker compose up -d --build`.
