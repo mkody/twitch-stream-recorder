@@ -1,4 +1,4 @@
-FROM python:3.13.4-alpine3.22
+FROM python:3.13.5-alpine3.22
 
 ARG UNAME=user
 ARG UID=1000
