@@ -156,7 +156,7 @@ class TwitchRecorder:
 
                 # start streamlink process
                 subprocess.call(
-                    ["streamlink", "--twitch-disable-ads", "twitch.tv/" + self.username, self.quality,
+                    ["streamlink", "twitch.tv/" + self.username, self.quality,
                      "-o", recorded_filename] + auth_header)
 
                 logging.info("recording stream is done, processing video file")
