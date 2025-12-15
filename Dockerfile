@@ -1,7 +1,9 @@
 FROM python:3.14.2-alpine3.23
 
-LABEL maintainer="Kody <gh@kdy.ch>"
-LABEL description="twitch-stream-recorder - A Docker container to automatically record Twitch streams."
+LABEL org.opencontainers.image.source=https://github.com/mkody/twitch-stream-recorder
+LABEL org.opencontainers.image.authors="Kody <gh@kdy.ch>"
+LABEL org.opencontainers.image.description="twitch-stream-recorder - A Docker container to automatically record Twitch streams."
+LABEL org.opencontainers.image.licenses=MIT
 
 ARG UNAME=user
 ARG UID=1000
