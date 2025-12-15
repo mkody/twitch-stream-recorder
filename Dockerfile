@@ -1,4 +1,4 @@
-FROM python:3.14.2-alpine3.23
+FROM python:3.15.0a2-alpine3.23
 
 LABEL maintainer="Kody <gh@kdy.ch>"
 LABEL description="twitch-stream-recorder - A Docker container to automatically record Twitch streams."
