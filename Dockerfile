@@ -1,19 +1,21 @@
-FROM python:3.14.1-alpine3.22
+FROM python:3.14.2-alpine3.23
+
+LABEL maintainer="Kody <gh@kdy.ch>"
+LABEL description="twitch-stream-recorder - A Docker container to automatically record Twitch streams."
 
 ARG UNAME=user
 ARG UID=1000
 ARG GID=1000
 
-COPY entrypoint.sh /
-COPY twitch-recorder.py /opt/
-
-RUN apk add --no-cache ffmpeg~=6.1 tini~=0.19.0 && \
-    python -m pip install --no-cache-dir --upgrade streamlink==7.6.0 && \
-    chmod 755 /entrypoint.sh && \
+RUN apk add --no-cache ffmpeg~=8.0.1 tini~=0.19.0 && \
+    python -m pip install --no-cache-dir --upgrade streamlink==8.1.0 && \
     addgroup -g "$GID" "$UNAME" && \
-    adduser -D -u "$UID" -G "$UNAME" -s /bin/bash "$UNAME" && \
-    chown -R "$UID:$GID" /opt
+    adduser -D -u "$UID" -G "$UNAME" -s /bin/bash "$UNAME"
+
+COPY --chown="$UID:$GID" entrypoint.sh twitch-recorder.py /opt/
+RUN chmod 755 /opt/entrypoint.sh && \
+    chown "$UID:$GID" /opt
 
 USER $UNAME
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/opt/entrypoint.sh"]
 CMD ["/sbin/tini", "--", "python", "/opt/twitch-recorder.py"]
