@@ -1,4 +1,4 @@
-FROM python:3.14.7-alpine3.23
+FROM python:3.14.7-alpine3.24
 
 LABEL org.opencontainers.image.source=https://github.com/mkody/twitch-stream-recorder
 LABEL org.opencontainers.image.authors="Kody <gh@kdy.ch>"
@@ -9,8 +9,8 @@ ARG UNAME=user
 ARG UID=1000
 ARG GID=1000
 
-RUN apk add --no-cache ffmpeg~=8.0.1 tini~=0.19.0 && \
-    python -m pip install --no-cache-dir --upgrade streamlink==8.2.1 && \
+RUN apk add --no-cache ffmpeg~=8.1.2 tini~=0.19.0 && \
+    python -m pip install --no-cache-dir --upgrade streamlink==8.6.0 && \
     addgroup -g "$GID" "$UNAME" && \
     adduser -D -u "$UID" -G "$UNAME" -s /bin/bash "$UNAME"
 
