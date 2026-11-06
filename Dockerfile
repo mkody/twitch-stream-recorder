@@ -10,7 +10,7 @@ ARG UID=1000
 ARG GID=1000
 
 RUN apk add --no-cache ffmpeg~=8.1.3 tini~=0.19.0 && \
-  python -m pip install --no-cache-dir --upgrade streamlink==8.6.0 && \
+  python -m pip install --no-cache-dir --upgrade streamlink==8.6.3 && \
   addgroup -g "$GID" "$UNAME" && \
   adduser -D -u "$UID" -G "$UNAME" -s /bin/bash "$UNAME"
 
