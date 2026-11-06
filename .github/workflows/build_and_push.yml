@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'master'
+      - "master"
 
 env:
   REGISTRY: ghcr.io
@@ -14,7 +14,6 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v7
 
