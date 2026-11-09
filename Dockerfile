@@ -1,4 +1,4 @@
-FROM python:3.15.2-alpine3.24
+FROM python:3.16.0a1-alpine3.24
 
 LABEL org.opencontainers.image.source=https://github.com/mkody/twitch-stream-recorder
 LABEL org.opencontainers.image.authors="Kody <gh@kdy.ch>"
