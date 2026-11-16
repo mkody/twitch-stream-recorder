@@ -17,3 +17,12 @@ updates:
       interval: "weekly"
     assignees:
       - "mkody"
+    ignore:
+      # Dependabot fails to understand PEP 440 pre-releases (e.g. 3.16.0a2,
+      # 3.16.0b1, 3.16.0rc1) especially with flavours like "-alpine3.24".
+      # They only ship pre-releases for X.Y.0, so match ".0a", ".0b" and ".0rc".
+      - dependency-name: "python"
+        versions:
+          - "*.0a*"
+          - "*.0b*"
+          - "*.0rc*"
